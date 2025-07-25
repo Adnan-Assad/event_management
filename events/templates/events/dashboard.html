@@ -1,0 +1,21 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">Dashboard</h1>
+
+<p>Total Participants: {{ total_participants }}</p>
+<p>Total Events: {{ total_events }}</p>
+<p>Upcoming Events: {{ upcoming_events }}</p>
+<p>Past Events: {{ past_events }}</p>
+
+<h2 class="mt-6 text-2xl font-semibold">Today's Events</h2>
+<ul>
+    {% for event in todays_events %}
+        <li>{{ event.name }} at {{ event.time }} - Location: {{ event.location }}</li>
+    {% empty %}
+        <li>No events today.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
