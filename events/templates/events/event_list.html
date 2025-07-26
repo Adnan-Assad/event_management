@@ -1,4 +1,4 @@
- {% extends 'events/base.html' %}
+  {% extends 'events/base.html' %}
 
 {% block title %}Events List{% endblock %}
 
@@ -9,6 +9,8 @@
     <input type="text" name="q" value="{{ query }}" placeholder="Search by name or location" class="border p-2 rounded">
     <select name="category" class="border p-2 rounded">
         <option value="">All Categories</option>
+        <option value="upcoming">Upcoming Events</option>
+        <option value="past">Past Events</option>
         {% for cat in categories %}
             <option value="{{ cat.pk }}" {% if category_id|stringformat:"s" == cat.pk|stringformat:"s" %}selected{% endif %}>{{ cat.name }}</option>
         {% endfor %}
@@ -52,4 +54,6 @@
         {% endfor %}
     </tbody>
 </table>
-{% endblock %}
+{% endblock %} 
+
+ 

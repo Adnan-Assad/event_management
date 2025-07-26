@@ -47,7 +47,7 @@ def category_create(request):
             return redirect('category_list')
     else:
         form = CategoryModelForm()
-    return render(request, 'events/category_form.html', {'form': form})
+    return render(request, 'events/category_create.html', {'form': form})
 def category_update(request,id):
     category = get_object_or_404(Category, id = id)
     if request.method == 'POST':
@@ -64,7 +64,7 @@ def category_delete(request, id):
     if request.method == 'POST':
         category.delete()
         return redirect('category_list')
-    return render(request, 'events/category_confirm_delete.html', {'category':category})
+    return render(request, 'events/category_delete.html', {'category':category})
 
 def event_create(request):
     if request.method == 'POST':
