@@ -17,7 +17,6 @@ def send_activation_email(sender, instance, created, **kwargs):
         )
         print(f"Welcome email sent to {instance.email}")
 
- 
 @receiver(m2m_changed, sender=Event.participants.through)
 def send_rsvp_email(sender, instance, action, id_set, **kwargs):
     if action == 'post_add':

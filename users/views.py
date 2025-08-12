@@ -39,7 +39,6 @@ def signup_view(request):
         form = SignUpForm()
     return render(request, 'users/signup.html', {'form': form})
 
-
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -82,7 +81,6 @@ def organizer_dashboard(request):
 
 def participant_dashboard(request):
     return render(request, 'users/participant_dashboard.html')
-
 
 def logout_view(request):
     if request.method == 'POST':
