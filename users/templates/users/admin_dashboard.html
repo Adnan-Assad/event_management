@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-semibold mb-6 text-gray-800">Admin Dashboard</h1>
+<p class="mb-4 text-gray-700">Manage all events, participants, and categories.</p>
+
+<a href="{% url 'event_list' %}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+    View All Events
+</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+ {% extends 'base.html' %}
+
+{% block title %}Organizer Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-semibold mb-6 text-gray-800">Organizer Dashboard</h1>
+<p class="mb-4 text-gray-700">Manage your events and categories.</p>
+
+<a href="{% url 'event_list' %}" class="inline-block bg-pink-600 text-white px-4 py-2 rounded hover:bg-indigo-500 transition">
+    My Events
+</a>
+{% endblock %}

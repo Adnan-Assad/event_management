@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
@@ -11,6 +12,9 @@ class Category(models.Model):
     
 class Event(models.Model):
     name = models.CharField(max_length=200)
+    title = models.CharField(max_length=200 , default='Default Title')
+    image = models.ImageField(upload_to='event_image/', default='ad.jpg')
+    participants = models.ManyToManyField(User, related_name='RSVP_Events', blank='True')
     description = models.TextField()
     date = models.DateField()
     time = models.TimeField()
@@ -23,8 +27,8 @@ class Event(models.Model):
 class Participant(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    events = models.ManyToManyField(Event, related_name='participants')
+    
 
     def __str__(self):
-        return self.name
+        return self.title
 

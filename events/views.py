@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 
 from django.http import HttpResponse
 from events.models import Category, Participant, Event
@@ -151,7 +153,26 @@ def dashboard(request):
     }
     return render(request, 'events/dashboard.html', context)
 
+@login_required
+def rsvp_event(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
 
+    if request.user not in event.participants.all():
+        event.participants.add(request.user)
+
+ 
+        send_mail(
+            'RSVP Confirmation',
+            f'Hi {request.user.first_name},\n\nYou have successfully RSVP’d for "{event.name}".',
+            'admin@example.com',   
+            [request.user.email], 
+        )
+
+        messages.success(request, "RSVP successful! A confirmation email has been sent.")
+    else:
+        messages.warning(request, "You have already RSVP’d for this event.")
+
+    return redirect('event_detail', id=event_id)
 
 
 

@@ -21,7 +21,7 @@ class EventModelForm(forms.ModelForm):
 class ParticipantModelForm(forms.ModelForm):
     class Meta:
         model = Participant
-        fields = ['name', 'email', 'events']
+        fields = ['name', 'email']
 
         widgets = {
             'events': forms.CheckboxSelectMultiple()
