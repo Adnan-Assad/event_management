@@ -19,7 +19,7 @@ class SignUpForm(UserCreationForm):
         model = CustomUser
         fields = [
             'username', 'first_name', 'last_name',
-            'email', 'phone_number', 'profile_picture',
+            'email', 'phone_number', 
             'password1', 'password2'
         ]
 
