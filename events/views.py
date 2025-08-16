@@ -9,6 +9,13 @@ from events.forms import CategoryModelForm, EventModelForm, ParticipantModelForm
 from django.db.models import Count, Q, Sum , Avg 
 from datetime import date
 from django.utils.timezone import now
+ 
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Event
+from .forms import EventForm
+
 
 # Create your views here.
 
@@ -175,6 +182,39 @@ def rsvp_event(request, event_id):
     return redirect('event_detail', id=event_id)
 
 
+
+ 
+class EventListView(ListView):
+    model = Event
+    template_name = 'events/event_list.html'
+    context_object_name = 'events'
+    ordering = ['-date']    
+
+ 
+class EventDetailView(DetailView):
+    model = Event
+    template_name = 'events/event_detail.html'
+    context_object_name = 'event'
+
+ 
+class EventCreateView(LoginRequiredMixin, CreateView):
+    model = Event
+    form_class = EventForm
+    template_name = 'events/event_form.html'
+    success_url = reverse_lazy('event_list')
+
+ 
+class EventUpdateView(LoginRequiredMixin, UpdateView):
+    model = Event
+    form_class = EventForm
+    template_name = 'events/event_form.html'
+    success_url = reverse_lazy('event_list')
+
+ 
+class EventDeleteView(LoginRequiredMixin, DeleteView):
+    model = Event
+    template_name = 'events/event_confirm_delete.html'
+    success_url = reverse_lazy('event_list')
 
 
         

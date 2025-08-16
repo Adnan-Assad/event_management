@@ -1,4 +1,6 @@
 from django import forms
+ 
+from .models import Event
 from events.models import Category, Event, Participant
 
 class CategoryModelForm(forms.ModelForm):
@@ -26,3 +28,8 @@ class ParticipantModelForm(forms.ModelForm):
         widgets = {
             'events': forms.CheckboxSelectMultiple()
         }
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ['title', 'description', 'date', 'location', 'image']

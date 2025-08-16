@@ -1,0 +1,11 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-6 mt-10">
+  <h2 class="text-2xl font-bold mb-4 text-center">Set New Password</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-xl hover:bg-purple-700 mt-2">Set Password</button>
+  </form>
+</div>
+{% endblock %}

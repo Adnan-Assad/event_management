@@ -1,4 +1,4 @@
- {% extends 'events/base.html' %}
+{% extends 'events/base.html' %}
 
 {% block title %}Event Detail{% endblock %}
 
@@ -19,5 +19,8 @@
     {% endfor %}
   </ul>
 
-  <a href="{% url 'event_list' %}" class="mt-4 inline-block bg-gray-300 px-4 py-2 rounded">Back to Events List</a>
+  <a href="{% url 'cbv_event_list' %}" class="mt-4 inline-block bg-gray-300 px-4 py-2 rounded">Back to Events List</a>
 {% endblock %}
+
+
+ 
